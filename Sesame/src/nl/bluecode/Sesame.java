@@ -1,6 +1,7 @@
 package nl.bluecode;
 
 import org.openrdf.repository.Repository;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.RepositoryResult;
 import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.sail.memory.MemoryStore;
@@ -11,18 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openrdf.model.Namespace;
 import org.openrdf.model.Value;
+import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryLanguage;
 
 public class Sesame {
-
+	static Repository myRepository;
+	static RepositoryConnection con;
+	static GUI gui;
+	
 	public static void main(String[] args) {
-		Repository myRepository;
-		RepositoryConnection con;
 		ArrayList<Namespace> namespaces = new ArrayList<Namespace>();
-
+		gui = new GUI();
+		
 		try {
 			myRepository = new SailRepository(new MemoryStore());
 			myRepository.initialize();
@@ -56,32 +60,47 @@ public class Sesame {
 			// The query
 			query += "SELECT ?subject ?object WHERE { ?subject rdf:type ?object }";
 			
-			// Execute the query
-			TupleQuery tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query);
-			TupleQueryResult result = tupleQuery.evaluate();
-			
-			// Get results
-			List<String> bindingNames = result.getBindingNames();
-			int numResults = 0;
-
-			while (result.hasNext()) {
-				numResults++;
-				BindingSet bindingSet = result.next();
-
-				System.out.println("");
-
-				for (int i = 0; i < bindingNames.size(); i++) {
-					String bindingName = bindingNames.get(i);
-					Value value = bindingSet.getValue(bindingName);
-					System.out.println(bindingName + "\t => \t" + value);
-				}
-			}
-			
-			System.out.println("Number of results: " + numResults);
+			gui.setOutput(doQuery(query), query);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static String doQuery(String query){
+		String out = "";
+		
+		// Execute the query
+		TupleQuery tupleQuery;
+		try {
+			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query);
+		
+			TupleQueryResult result = tupleQuery.evaluate();
+			
+			// Get results
+			List<String> bindingNames = result.getBindingNames();
+			int numResults = 0;
+	
+			while (result.hasNext()) {
+				numResults++;
+				BindingSet bindingSet = result.next();
+	
+				out = out + "\n";
+	
+				for (int i = 0; i < bindingNames.size(); i++) {
+					String bindingName = bindingNames.get(i);
+					Value value = bindingSet.getValue(bindingName);
+					out = out + bindingName + "\t => \t" + value + "\n";
+				}
+			}
+			
+			out = out + "Number of results: " + numResults + "\n";
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
+		
+		return out;
 	}
 }
