@@ -24,7 +24,6 @@ public class Sesame {
 	static GUI gui;
 	
 	public static void main(String[] args) {
-		ArrayList<Namespace> namespaces = new ArrayList<Namespace>();
 		gui = new GUI();
 		
 		try {
@@ -40,25 +39,12 @@ public class Sesame {
 			// Retrieve namespaces used in the repository
 			System.out.println("Retrieving namespaces...");
 
-			RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
-			while (namespacesinRepository.hasNext()) {
-				Namespace namespace = namespacesinRepository.next();
-				namespaces.add(namespace);
-				System.out.println(namespace.getPrefix() + "\t => \t" + namespace.getName());
-			}
+			
 
 			System.out.println();
 			
-			// Add namespaces to the SPARQL query
-			String query = "";
-			
-			for(int i=0; i<namespaces.size(); i++) {
-				Namespace namespace = namespaces.get(i);
-				query += "PREFIX " + namespace.getPrefix() + ": <" + namespace.getName() + ">\n";
-			}
-			
 			// The query
-			query += "SELECT ?subject ?object WHERE { ?subject rdf:type ?object }";
+			String query = "SELECT ?subject ?object WHERE { ?subject rdf:type ?object }";
 			
 			gui.setOutput(doQuery(query), query);
 			
@@ -70,11 +56,18 @@ public class Sesame {
 	
 	public static String doQuery(String query){
 		String out = "";
+		String namespaces = "";
 		
 		// Execute the query
 		TupleQuery tupleQuery;
 		try {
-			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query);
+			RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
+			while (namespacesinRepository.hasNext()) {
+				Namespace namespace = namespacesinRepository.next();
+				namespaces += "PREFIX " + namespace.getPrefix() + ": <" + namespace.getName() + ">\n";
+			}
+			
+			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, namespaces + query);
 		
 			TupleQueryResult result = tupleQuery.evaluate();
 			
