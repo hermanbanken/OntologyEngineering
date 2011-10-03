@@ -6480,7 +6480,7 @@
         <name>Univ Washington</name>
     </Organization>
 
-    <Organization rdf:about="http://data.semanticweb.org/organization/univ-zuerich">
+    <Organization rdf:about="http://data.semanticweb.org/organization/university-of-zurich">
         <rdfs:label>Univ Zürich</rdfs:label>
         <member rdf:resource="http://data.semanticweb.org/person/abraham-bernstein"/>
         <name>Univ Zürich</name>
@@ -7061,7 +7061,7 @@
 
     <Person rdf:about="http://data.semanticweb.org/person/abraham-bernstein">
         <swc:holdsRole rdf:resource="http://data.semanticweb.org/conference/iswc/2008/research/pcmember"/>
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/univ-zuerich"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-zurich"/>
         <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/university-of-zurich"/>
         <rdfs:label>Abraham Bernstein</rdfs:label>
         <based_near rdf:resource="http://dbpedia.org/resource/Switzerland"/>

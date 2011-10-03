@@ -1,0 +1,66 @@
+
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ConferenceEvent
+class	 => 	http://swrc.ontoware.org/ontology#InProceedings
+class	 => 	http://xmlns.com/foaf/0.1/Organization
+class	 => 	http://xmlns.com/foaf/0.1/Person
+class	 => 	http://data.semanticwebb.org/ns/swc/ontology#PCMember
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#KeynoteTalk
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PanelEvent
+class	 => 	http://swrc.ontoware.org/ontology#Proceedings
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#DoctoralConsortiumChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#FellowshipChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#GeneralChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#LocalChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#LocalOrganisingCommittee
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#MetadataChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PosterandDemoChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ProceedingsChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ProgrammeChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PublicityChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SemanticWebChallengeChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SemanticWebIn-UseChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SponsorChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#TutorialChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#WorkshopChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#TutorialEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent
+class	 => 	http://swrc.ontoware.org/ontology#ConferenceEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#Chair
+class	 => 	http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#Role
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SessionEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#TalkEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#TrackEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SocialEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#BreakEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#MealEvent
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#AcademicEvent
+class	 => 	http://www.w3.org/2002/07/owl#Ontology
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SessionChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ProgrammeCommitteeMember
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#Sponsorship
+class	 => 	http://www.w3.org/2003/01/geo/wgs84_pos#Point
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#MeetingRoomPlace
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ConferenceVenuePlace
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#ConferencePCO
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#DevelopersTrackChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#GeneralViceChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#IW3C2Liaison
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PanelsChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PostersChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#RefereedPaperTrackChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#SponsorshipManagers
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#TutorialsChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#VolunteersChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#WorkshopsChair
+class	 => 	http://data.semanticweb.org/ns/swc/ontology#PaperPresentation
+Number of results: 55
+
+>> Ik krijg hier de dubbele niet uit
+
+SELECT ?label WHERE {
+?university rdfs:label ?label.
+{SELECT DISTINCT ?university WHERE { ?university rdf:type foaf:Organization. ?university rdfs:label ?label. FILTER regex(?label, "university", "i")}}
+}
+
+SELECT ?university (SAMPLE(?labels) AS ?label) WHERE { ?university rdfs:label ?labels. {SELECT DISTINCT ?university WHERE { ?university rdf:type foaf:Organization. ?university rdfs:label ?label. FILTER regex(?label, "university", "i")}}} GROUP BY ?university

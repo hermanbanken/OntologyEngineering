@@ -5115,7 +5115,7 @@ detection than existing techniques.</swrc:abstract>
         <name>Tsinghua University</name>
     </Organization>
 
-    <Organization rdf:about="http://data.semanticweb.org/organization/tu-wien">
+    <Organization rdf:about="http://data.semanticweb.org/organization/vienna-university-of-technology">
         <member rdf:resource="http://data.semanticweb.org/person/bernhard-krueepl"/>
         <member rdf:resource="http://data.semanticweb.org/person/wolfgang-holzinger"/>
         <member rdf:resource="http://data.semanticweb.org/person/yansen-darmaputra"/>
@@ -5967,7 +5967,7 @@ detection than existing techniques.</swrc:abstract>
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/bernhard-krueepl">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <family_name>Krüepl</family_name>
         <firstName>Bernhard</firstName>
         <made rdf:resource="http://data.semanticweb.org/conference/www/2009/paper/115"/>
@@ -10233,7 +10233,7 @@ detection than existing techniques.</swrc:abstract>
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/wolfgang-holzinger">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <family_name>Holzinger</family_name>
         <firstName>Wolfgang</firstName>
         <made rdf:resource="http://data.semanticweb.org/conference/www/2009/paper/115"/>
@@ -10458,7 +10458,7 @@ detection than existing techniques.</swrc:abstract>
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/yansen-darmaputra">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <family_name>Darmaputra</family_name>
         <firstName>Yansen</firstName>
         <made rdf:resource="http://data.semanticweb.org/conference/www/2009/paper/115"/>

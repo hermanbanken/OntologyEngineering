@@ -2281,7 +2281,7 @@
         <dc:creator rdf:resource="http://data.semanticweb.org/person/bernhard-schueler"/>
         <dc:creator rdf:resource="http://data.semanticweb.org/person/sergej-sizov"/>
         <dc:creator rdf:resource="http://data.semanticweb.org/person/steffen-staab"/>
-        <dc:creator rdf:resource="http://data.semanticweb.org/person/tran-duc-thanh"/>
+        <dc:creator rdf:resource="http://data.semanticweb.org/person/thanh-tran"/>
         <dc:subject>SPARQL</dc:subject>
         <dc:subject>meta knowledge</dc:subject>
         <dc:subject>provenance</dc:subject>
@@ -2290,7 +2290,7 @@
         <swrc:author rdf:resource="http://data.semanticweb.org/person/bernhard-schueler"/>
         <swrc:author rdf:resource="http://data.semanticweb.org/person/sergej-sizov"/>
         <swrc:author rdf:resource="http://data.semanticweb.org/person/steffen-staab"/>
-        <swrc:author rdf:resource="http://data.semanticweb.org/person/tran-duc-thanh"/>
+        <swrc:author rdf:resource="http://data.semanticweb.org/person/thanh-tran"/>
         <swrc:month>April</swrc:month>
         <swrc:pages>625-634</swrc:pages>
         <swrc:url rdf:resource="http://doi.acm.org/10.1145/1367497.1367582"/>
@@ -2300,13 +2300,13 @@
             <rdf:_1 rdf:resource="http://data.semanticweb.org/person/sergej-sizov"/>
             <rdf:_2 rdf:resource="http://data.semanticweb.org/person/bernhard-schueler"/>
             <rdf:_3 rdf:resource="http://data.semanticweb.org/person/steffen-staab"/>
-            <rdf:_4 rdf:resource="http://data.semanticweb.org/person/tran-duc-thanh"/>
+            <rdf:_4 rdf:resource="http://data.semanticweb.org/person/thanh-tran"/>
         </swrc_ext:authorList>
         <rdfs:label>Querying for Meta Knowledge</rdfs:label>
         <maker rdf:resource="http://data.semanticweb.org/person/bernhard-schueler"/>
         <maker rdf:resource="http://data.semanticweb.org/person/sergej-sizov"/>
         <maker rdf:resource="http://data.semanticweb.org/person/steffen-staab"/>
-        <maker rdf:resource="http://data.semanticweb.org/person/tran-duc-thanh"/>
+        <maker rdf:resource="http://data.semanticweb.org/person/thanh-tran"/>
     </swrc:InProceedings>
 
     <swrc:InProceedings rdf:about="http://data.semanticweb.org/conference/www/2008/paper/618">
@@ -6389,7 +6389,7 @@
         <name>Tsinghua University, Beijing</name>
     </Organization>
 
-    <Organization rdf:about="http://data.semanticweb.org/organization/tu-wien">
+    <Organization rdf:about="http://data.semanticweb.org/organization/vienna-university-of-technology">
         <rdfs:label>TU Wien</rdfs:label>
         <member rdf:resource="http://data.semanticweb.org/person/schahram-dustdar"/>
         <name>TU Wien</name>
@@ -6508,7 +6508,7 @@
 
     <Organization rdf:about="http://data.semanticweb.org/organization/institut-aifb-universitaet-karlsruhe">
         <rdfs:label>University of Karlsruhe, Institute AIFB</rdfs:label>
-        <member rdf:resource="http://data.semanticweb.org/person/tran-duc-thanh"/>
+        <member rdf:resource="http://data.semanticweb.org/person/thanh-tran"/>
         <name>University of Karlsruhe, Institute AIFB</name>
     </Organization>
 
@@ -9232,7 +9232,7 @@
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/schahram-dustdar">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <rdfs:label>Schahram Dustdar</rdfs:label>
         <based_near rdf:resource="http://dbpedia.org/resource/Austria"/>
         <made rdf:resource="http://data.semanticweb.org/conference/www/2008/paper/338"/>
@@ -9556,7 +9556,7 @@
         <name>Torsten Suel</name>
     </Person>
 
-    <Person rdf:about="http://data.semanticweb.org/person/tran-duc-thanh">
+    <Person rdf:about="http://data.semanticweb.org/person/thanh-tran">
         <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/institut-aifb-universitaet-karlsruhe"/>
         <rdfs:label>Tran Duc Thanh</rdfs:label>
         <based_near rdf:resource="http://dbpedia.org/resource/Germany"/>

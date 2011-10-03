@@ -1289,7 +1289,7 @@
         <name>Tsinghua University</name>
     </Organization>
 
-    <Organization rdf:about="http://data.semanticweb.org/organization/tu-wien">
+    <Organization rdf:about="http://data.semanticweb.org/organization/vienna-university-of-technology">
         <rdfs:label>Technische Universität Wien</rdfs:label>
         <homepage rdf:resource="http://www.tuwien.ac.at/"/>
         <member rdf:resource="http://data.semanticweb.org/person/marcus-herzog"/>
@@ -2385,7 +2385,7 @@
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/marcus-herzog">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <rdfs:label>Marcus Herzog</rdfs:label>
         <family_name>Herzog</family_name>
         <firstName>Marcus</firstName>
@@ -2989,7 +2989,7 @@
     </Person>
 
     <Person rdf:about="http://data.semanticweb.org/person/wolfgang-holzinger">
-        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/tu-wien"/>
+        <swrc:affiliation rdf:resource="http://data.semanticweb.org/organization/vienna-university-of-technology"/>
         <rdfs:label>Wolfgang Holzinger</rdfs:label>
         <family_name>Holzinger</family_name>
         <firstName>Wolfgang</firstName>

@@ -1,0 +1,124 @@
+1. Return a list of all papers about algorithms.
+
+Paper
+rdf:type swrc:InProceedings
+dc:title [literal]
+swrc:abstract [literal]
+swrc:author [Person]
+swrc:url [URL]
+swrc_ext:authorList [literal]
+rdfs:label [literal]
+foaf:maker [Person]
+swc:hasRelatedEvent [Event]
+
+SELECT ?title WHERE { ?paper rdf:type swrc:InProceedings. ?paper dc:title ?title. FILTER regex(?title, "algorithm" , "i") } 
+
+title	 => 	"SemTree: Ontology-Based Decision Tree Algorithm for Recommender Systems"
+title	 => 	"Anytime Query Answering in RDF through Evolutionary Algorithms"
+title	 => 	"A Kernel Revision Operator for Terminologies - Algorithms and Evaluations"
+title	 => 	"DOGMA: A Disk-Oriented Graph Matching Algorithm for RDF Databases"
+title	 => 	"Signal/Collect: Graph Algorithms for the (Semantic) Web"
+title	 => 	"Efficient processing of large RDF streams using memory management algorithms"
+title	 => 	"Expertise Networks in Online Communities: Structure and Algorithms"
+title	 => 	"Visualizing Differences in Web Search Algorithms using the Expected Weighted Hoeffding Distance"
+title	 => 	"Empirical Comparison of Algorithms for Network Community Detection"
+title	 => 	"Monitoring Algorithms for Negative Feedback Systems"
+Number of results: 10
+
+2. Return a list of all authors that have published in the 2006 international semantic web conference but not in any other conference.
+SELECT ?author WHERE { ?paper swrc:author ?author. FILTER NOT EXISTS { ?paper2 swrc:author ?author. ?paper2 swrc:year ?year } } 
+
+author	 => 	http://data.semanticweb.org/person/murat-osman-unalir
+author	 => 	http://data.semanticweb.org/person/ovunc-ozturk
+author	 => 	http://data.semanticweb.org/person/tugba-ozacar
+author	 => 	http://data.semanticweb.org/person/wei-hu
+author	 => 	http://data.semanticweb.org/person/loredana-laera
+author	 => 	http://data.semanticweb.org/person/trevor-bench-capon
+author	 => 	http://data.semanticweb.org/person/doina-caragea
+author	 => 	http://data.semanticweb.org/person/vasant-honavar
+author	 => 	http://data.semanticweb.org/person/riccardo-rosati
+author	 => 	http://data.semanticweb.org/person/antoine-zimmermann
+author	 => 	http://data.semanticweb.org/person/darren-lunn
+author	 => 	http://data.semanticweb.org/person/alessio-gugliotta
+author	 => 	http://data.semanticweb.org/person/barry-norton
+author	 => 	http://data.semanticweb.org/person/liliana-cabral
+author	 => 	http://data.semanticweb.org/person/stefania-galizia
+author	 => 	http://data.semanticweb.org/person/vlad-tanasescu
+author	 => 	http://data.semanticweb.org/person/vanessa-lopez
+author	 => 	http://data.semanticweb.org/person/alexandra-poulovassilis
+author	 => 	http://data.semanticweb.org/person/carlos-hurtado
+author	 => 	http://data.semanticweb.org/person/peter-wood
+author	 => 	http://data.semanticweb.org/person/chris-welty
+author	 => 	http://data.semanticweb.org/person/j-william-murdock
+author	 => 	http://data.semanticweb.org/person/boanerges-aleman-meza
+author	 => 	http://data.semanticweb.org/person/budak-arpinar
+author	 => 	http://data.semanticweb.org/person/joseph-hassell
+author	 => 	http://data.semanticweb.org/person/dmitry-tsarkov
+author	 => 	http://data.semanticweb.org/person/tom-gardiner
+author	 => 	http://data.semanticweb.org/person/emmanuel-pietriga
+author	 => 	http://data.semanticweb.org/person/ryan-lee
+author	 => 	http://data.semanticweb.org/person/ahlem-ben-hassine
+author	 => 	http://data.semanticweb.org/person/shigeo-matsubara
+author	 => 	http://data.semanticweb.org/person/wolfgang-holzinger
+author	 => 	http://data.semanticweb.org/person/luke-mcdowell
+author	 => 	http://data.semanticweb.org/person/michael-cafarella
+author	 => 	http://data.semanticweb.org/person/christoph-tempich
+author	 => 	http://data.semanticweb.org/person/elena-paslaru-bontas-simperl
+author	 => 	http://data.semanticweb.org/person/york-sure
+author	 => 	http://data.semanticweb.org/person/dario-cerizza
+author	 => 	http://data.semanticweb.org/person/federico-michele-facca
+author	 => 	http://data.semanticweb.org/person/carole-a-goble
+author	 => 	http://data.semanticweb.org/person/khalid-belhajjame
+author	 => 	http://data.semanticweb.org/person/norman-w-paton
+author	 => 	http://data.semanticweb.org/person/suzanne-m-embury
+author	 => 	http://data.semanticweb.org/person/junichiro-mori
+author	 => 	http://data.semanticweb.org/person/takumi-tsujishita
+author	 => 	http://data.semanticweb.org/person/luc-steels
+author	 => 	http://data.semanticweb.org/person/melanie-aurnhammer
+author	 => 	http://data.semanticweb.org/person/peter-hanappe
+author	 => 	http://data.semanticweb.org/person/abhita-chugh
+author	 => 	http://data.semanticweb.org/person/william-liu
+author	 => 	http://data.semanticweb.org/person/emilia-cimpian
+author	 => 	http://data.semanticweb.org/person/mick-kerrigan
+author	 => 	http://data.semanticweb.org/person/alain-leger
+author	 => 	http://data.semanticweb.org/person/cartic-ramakrishnan
+author	 => 	http://data.semanticweb.org/person/uwe-thaden
+author	 => 	http://data.semanticweb.org/person/matthias-nickles
+author	 => 	http://data.semanticweb.org/person/hap-kolb
+author	 => 	http://data.semanticweb.org/person/yoshihiro-otsuka
+author	 => 	http://data.semanticweb.org/person/yu-miyoshi
+author	 => 	http://data.semanticweb.org/person/christopher-brewster
+author	 => 	http://data.semanticweb.org/person/nataliya-prokoshyna
+author	 => 	http://data.semanticweb.org/person/esther-kaufmann
+author	 => 	http://data.semanticweb.org/person/chris-welty
+author	 => 	http://data.semanticweb.org/person/elisa-f-kendall
+author	 => 	http://data.semanticweb.org/person/evan-k-wallace
+author	 => 	http://data.semanticweb.org/person/robert-m-colomb
+author	 => 	http://data.semanticweb.org/person/saartje-brockmans
+author	 => 	http://data.semanticweb.org/person/kwok-cheung
+author	 => 	http://data.semanticweb.org/person/matthias-klusch
+author	 => 	http://data.semanticweb.org/person/ulrich-basters
+author	 => 	http://data.semanticweb.org/person/erietta-liarou
+author	 => 	http://data.semanticweb.org/person/stratos-idreos
+author	 => 	http://data.semanticweb.org/person/mingcai-hong
+author	 => 	http://data.semanticweb.org/person/alessandra-toninelli
+author	 => 	http://data.semanticweb.org/person/ora-lassila
+author	 => 	http://data.semanticweb.org/person/rebecca-montanari
+author	 => 	http://data.semanticweb.org/person/lynda-hardman
+author	 => 	http://data.semanticweb.org/person/jihie-kim
+author	 => 	http://data.semanticweb.org/person/varun-ratnakar
+author	 => 	http://data.semanticweb.org/person/yolanda-gil
+author	 => 	http://data.semanticweb.org/person/niraj-aswani
+author	 => 	http://data.semanticweb.org/person/aaron-kershenbaum
+Number of results: 82
+
+3. Return a list of all authors that have published in more than two different conferences.
+
+4. Return the names, if possible split up into first name and last name, of all authors working at the VU University Amsterdam (where the VU is identified as http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands)
+
+5. Return a list of exactly 10 different universities, ordered alphabetically by their name.
+SELECT ?label WHERE { ?university rdfs:label ?label. {SELECT DISTINCT ?university WHERE { ?university rdf:type foaf:Organization. ?university rdfs:label ?label. FILTER regex(?label, "university", "i")}}} ORDER BY ?label LIMIT 10
+
+6. Return a graph of triples, where each triple states that a paper is about algorithms, using the property http://purl.org/dc/elements/1.1/subject from the Dublin Core vocabulary for the isAbout relation. Include only papers that are actually about algorithms.
+
+7. Return a graph consisting of links between authors that have published a paper together, using the http://swat.cse.lehigh.edu/resources/onto/dblp.owl#coauthor property. Include only those authors that have published a paper together with an employee of TNO Science and Industry Delft.
