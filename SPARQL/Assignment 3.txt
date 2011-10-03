@@ -113,9 +113,10 @@ author	 => 	http://data.semanticweb.org/person/aaron-kershenbaum
 Number of results: 82
 
 3. Return a list of all authors that have published in more than two different conferences.
+SELECT DISTINCT ?author WHERE { ?paper swrc:author ?author. { SELECT (COUNT(DISTINCT ?p) as ?countConf) WHERE {?p swrc:author ?author} }. FILTER(?countConf >= 2) }
 
 4. Return the names, if possible split up into first name and last name, of all authors working at the VU University Amsterdam (where the VU is identified as http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands)
-SELECT ?name WHERE { {SELECT DISTINCT ?author WHERE { ?author swrc:affiliation <http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands>. ?paper swrc:author ?author }}. ?author :name ?name}
+SELECT ?name ?firstName ?lastName WHERE { {SELECT DISTINCT ?author WHERE { ?author swrc:affiliation <http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands>. ?paper swrc:author ?author }}. ?author :name ?name. OPTIONAL { ?author :firstName ?firstName. ?author :family_name ?lastName} }
 
 5. Return a list of exactly 10 different universities, ordered alphabetically by their name.
 SELECT ?label WHERE { ?university rdfs:label ?label. {SELECT DISTINCT ?university WHERE { ?university rdf:type foaf:Organization. ?university rdfs:label ?label. FILTER regex(?label, "university", "i")}}} ORDER BY ?label LIMIT 10
