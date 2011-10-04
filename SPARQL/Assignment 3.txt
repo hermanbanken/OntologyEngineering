@@ -1,17 +1,10 @@
 1. Return a list of all papers about algorithms.
 
-Paper
-rdf:type swrc:InProceedings
-dc:title [literal]
-swrc:abstract [literal]
-swrc:author [Person]
-swrc:url [URL]
-swrc_ext:authorList [literal]
-rdfs:label [literal]
-foaf:maker [Person]
-swc:hasRelatedEvent [Event]
-
-SELECT ?title WHERE { ?paper rdf:type swrc:InProceedings. ?paper dc:title ?title. FILTER regex(?title, "algorithm" , "i") } 
+SELECT ?title WHERE { 
+	?paper rdf:type swrc:InProceedings. 
+	?paper dc:title ?title. 
+	FILTER regex(?title, "algorithm" , "i")
+} 
 
 title	 => 	"SemTree: Ontology-Based Decision Tree Algorithm for Recommender Systems"
 title	 => 	"Anytime Query Answering in RDF through Evolutionary Algorithms"
@@ -26,7 +19,14 @@ title	 => 	"Monitoring Algorithms for Negative Feedback Systems"
 Number of results: 10
 
 2. Return a list of all authors that have published in the 2006 international semantic web conference but not in any other conference.
-SELECT ?author WHERE { ?paper swrc:author ?author. FILTER NOT EXISTS { ?paper2 swrc:author ?author. ?paper2 swrc:year ?year } } 
+
+SELECT ?author WHERE { 
+	?paper swrc:author ?author. 
+	FILTER NOT EXISTS { 
+		?paper2 swrc:author ?author. 
+		?paper2 swrc:year ?year
+	}
+} 
 
 author	 => 	http://data.semanticweb.org/person/murat-osman-unalir
 author	 => 	http://data.semanticweb.org/person/ovunc-ozturk
@@ -119,7 +119,27 @@ SELECT DISTINCT ?author WHERE { ?paper swrc:author ?author. { SELECT (COUNT(DIST
 SELECT ?name ?firstName ?lastName WHERE { {SELECT DISTINCT ?author WHERE { ?author swrc:affiliation <http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands>. ?paper swrc:author ?author }}. ?author :name ?name. OPTIONAL { ?author :firstName ?firstName. ?author :family_name ?lastName} }
 
 5. Return a list of exactly 10 different universities, ordered alphabetically by their name.
-SELECT ?label WHERE { ?university rdfs:label ?label. {SELECT DISTINCT ?university WHERE { ?university rdf:type foaf:Organization. ?university rdfs:label ?label. FILTER regex(?label, "university", "i")}}} ORDER BY ?label LIMIT 10
+
+SELECT DISTINCT ?onelabel WHERE { 
+	?university rdf:type foaf:Organization .
+	?university rdfs:label ?label .
+	FILTER regex(?label, "university", "i") .
+	{
+		SELECT ?onelabel WHERE { ?university rdfs:label ?onelabel } LIMIT 1
+	}
+} ORDER BY ?onelabel LIMIT 10
+
+onelabel	 => 	"A.I. Group, Faculty of Technology, Bielefeld University, Germany"
+onelabel	 => 	"Aalborg University"
+onelabel	 => 	"Aristotle University of Thessaloniki"
+onelabel	 => 	"Arizona State University"
+onelabel	 => 	"Beihang University"
+onelabel	 => 	"Beijing University"
+onelabel	 => 	"Bejing Jiantong University"
+onelabel	 => 	"Birkbeck, University of London"
+onelabel	 => 	"Brown University"
+onelabel	 => 	"Bundeswehr University Munich, Germany"
+Number of results: 10
 
 6. Return a graph of triples, where each triple states that a paper is about algorithms, using the property http://purl.org/dc/elements/1.1/subject from the Dublin Core vocabulary for the isAbout relation. Include only papers that are actually about algorithms.
 
