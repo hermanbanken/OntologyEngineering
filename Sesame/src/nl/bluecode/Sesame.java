@@ -10,6 +10,9 @@ import org.openrdf.rio.RDFFormat;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
+
 import org.openrdf.model.Namespace;
 import org.openrdf.model.Value;
 import org.openrdf.query.MalformedQueryException;
@@ -93,9 +96,13 @@ public class Sesame {
 			out = out + "Number of results: " + numResults + "\n";
 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			out = e.getMessage();
 		}
 		
 		return out;
+	}
+	
+	public static String removeSpaces(String s) {
+		return s.replaceAll("[\t ]{2,}", " ");
 	}
 }

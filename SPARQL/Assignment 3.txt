@@ -143,4 +143,18 @@ Number of results: 10
 
 6. Return a graph of triples, where each triple states that a paper is about algorithms, using the property http://purl.org/dc/elements/1.1/subject from the Dublin Core vocabulary for the isAbout relation. Include only papers that are actually about algorithms.
 
+SELECT ?paper ?subject  WHERE { 
+	?paper rdf:type swrc:InProceedings. 
+	?paper dc:title ?title.
+	?paper dc:subject ?subject 
+	FILTER regex(?subject, "algorithm" , "i")
+}
+
 7. Return a graph consisting of links between authors that have published a paper together, using the http://swat.cse.lehigh.edu/resources/onto/dblp.owl#coauthor property. Include only those authors that have published a paper together with an employee of TNO Science and Industry Delft.
+
+SELECT DISTINCT ?author1 ?author2 WHERE {
+		?author1 swrc:affiliation <http://data.semanticweb.org/organization/tno-science-industry>. 
+		?paper swrc:author ?author1.
+		?paper swrc:author ?author2.
+		FILTER (?author1 != ?author2)
+}

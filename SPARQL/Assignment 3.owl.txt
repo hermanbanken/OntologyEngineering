@@ -1,0 +1,22 @@
+1
+
+:MultiAuthorPaper
+  a owl:Class
+  rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty dc:author ;
+      owl:minCardinality "4"^^<http://www.w3.org/2001/XMLSchema#int>
+    ] .
+
+2
+
+:JIMsCoAuthors
+	a owl:Class
+	rdfs:subClassOf
+	  [ a owl:Restriction ;
+		owl:onProperty dc:author ;]
+		
+3
+:Authors
+	a owl:Class
+	rdfs:
