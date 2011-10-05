@@ -7,14 +7,21 @@ import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.sail.memory.MemoryStore;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.rio.RDFFormat;
+
+import info.aduna.collections.ArrayMap;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import org.openrdf.model.Namespace;
+import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
+import org.openrdf.query.GraphQuery;
+import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
@@ -64,36 +71,62 @@ public class Sesame {
 		
 		// Execute the query
 		TupleQuery tupleQuery;
+		GraphQuery graphQuery;
+		HashMap<String, Namespace> nsp = new HashMap<String, Namespace>();
+		
 		try {
 			RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
 			while (namespacesinRepository.hasNext()) {
 				Namespace namespace = namespacesinRepository.next();
 				namespaces += "PREFIX " + namespace.getPrefix() + ": <" + namespace.getName() + ">\n";
 				System.out.println("Namespace " + namespace.getPrefix() + ": <" + namespace.getName() + ">");
+				nsp.put(namespace.getName(), namespace);
 			}
 			
-			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, namespaces + query);
-		
-			TupleQueryResult result = tupleQuery.evaluate();
-			
-			// Get results
-			List<String> bindingNames = result.getBindingNames();
-			int numResults = 0;
-	
-			while (result.hasNext()) {
-				numResults++;
-				BindingSet bindingSet = result.next();
-	
-				out = out + "\n";
-	
-				for (int i = 0; i < bindingNames.size(); i++) {
-					String bindingName = bindingNames.get(i);
-					Value value = bindingSet.getValue(bindingName);
-					out = out + bindingName + "\t => \t" + value + "\n";
+			if(query.contains("CONSTRUCT"))
+			{
+				graphQuery = con.prepareGraphQuery(QueryLanguage.SPARQL, namespaces + query);
+				GraphQueryResult result = graphQuery.evaluate();
+				
+				// Get results
+				int numResults = 0;
+				
+				while (result.hasNext()) {
+					numResults++;
+					Statement a = result.next();
+					out = out + 
+							a.getSubject() + "\t" + 
+							nsp.get(a.getPredicate().getNamespace()).getPrefix() + ":"+a.getPredicate().getLocalName() + "\t" + 
+							a.getObject() + " .\n";
 				}
+
+				//out = out + "Number of results: " + numResults + "\n";
+			} 
+			else if(query.contains("SELECT"))
+			{
+				tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, namespaces + query);
+				TupleQueryResult result = tupleQuery.evaluate();
+				
+				// Get results
+				List<String> bindingNames = result.getBindingNames();
+				int numResults = 0;
+		
+				while (result.hasNext()) {
+					numResults++;
+					BindingSet bindingSet = result.next();
+		
+					out = out + "\n";
+		
+					for (int i = 0; i < bindingNames.size(); i++) {
+						String bindingName = bindingNames.get(i);
+						Value value = bindingSet.getValue(bindingName);
+						out = out + bindingName + "\t => \t" + value + "\n";
+					}
+				}
+				
+				out = out + "Number of results: " + numResults + "\n";
 			}
 			
-			out = out + "Number of results: " + numResults + "\n";
 		
 		} catch (Exception e) {
 			out = e.getMessage();
