@@ -113,10 +113,469 @@ author	 => 	http://data.semanticweb.org/person/aaron-kershenbaum
 Number of results: 82
 
 3. Return a list of all authors that have published in more than two different conferences.
-SELECT DISTINCT ?author WHERE { ?paper swrc:author ?author. { SELECT (COUNT(DISTINCT ?p) as ?countConf) WHERE {?p swrc:author ?author} }. FILTER(?countConf >= 2) }
+
+SELECT DISTINCT ?author WHERE { 
+  ?paper swrc:author ?author. 
+  { 
+    SELECT (COUNT(DISTINCT ?p) as ?countConf) 
+    WHERE {?p swrc:author ?author}
+  }. 
+  FILTER(?countConf >= 2)
+}
+
+
+author	 => 	http://data.semanticweb.org/person/yuzhong-qu
+author	 => 	http://data.semanticweb.org/person/jerome-euzenat
+author	 => 	http://data.semanticweb.org/person/terry-payne
+author	 => 	http://data.semanticweb.org/person/valentina-tamma
+author	 => 	http://data.semanticweb.org/person/jie-bao
+author	 => 	http://data.semanticweb.org/person/boris-motik
+author	 => 	http://data.semanticweb.org/person/ian-horrocks
+author	 => 	http://data.semanticweb.org/person/ulrike-sattler
+author	 => 	http://data.semanticweb.org/person/bijan-parsia
+author	 => 	http://data.semanticweb.org/person/james-hendler
+author	 => 	http://data.semanticweb.org/person/taowei-wang
+author	 => 	http://data.semanticweb.org/person/sean-bechhofer
+author	 => 	http://data.semanticweb.org/person/simon-harper
+author	 => 	http://data.semanticweb.org/person/carlos-pedrinaci
+author	 => 	http://data.semanticweb.org/person/john-domingue
+author	 => 	http://data.semanticweb.org/person/enrico-motta
+author	 => 	http://data.semanticweb.org/person/marta-sabou
+author	 => 	http://data.semanticweb.org/person/chris-welty
+author	 => 	http://data.semanticweb.org/person/claudio-gutierrez
+author	 => 	http://data.semanticweb.org/person/jorge-a-perez
+author	 => 	http://data.semanticweb.org/person/marcelo-arenas
+author	 => 	http://data.semanticweb.org/person/jing-mei
+author	 => 	http://data.semanticweb.org/person/li-ma
+author	 => 	http://data.semanticweb.org/person/yue-pan
+author	 => 	http://data.semanticweb.org/person/christian-bizer
+author	 => 	http://data.semanticweb.org/person/david-karger
+author	 => 	http://data.semanticweb.org/person/toru-ishida
+author	 => 	http://data.semanticweb.org/person/bernhard-kruepl
+author	 => 	http://data.semanticweb.org/person/marcus-herzog
+author	 => 	http://data.semanticweb.org/person/emanuele-della-valle
+author	 => 	http://data.semanticweb.org/person/irene-celino
+author	 => 	http://data.semanticweb.org/person/marco-brambilla
+author	 => 	http://data.semanticweb.org/person/stefano-ceri
+author	 => 	http://data.semanticweb.org/person/robert-stevens
+author	 => 	http://data.semanticweb.org/person/mitsuru-ishizuka
+author	 => 	http://data.semanticweb.org/person/yutaka-matsuo
+author	 => 	http://data.semanticweb.org/person/mark-a-musen
+author	 => 	http://data.semanticweb.org/person/natalya-noy
+author	 => 	http://data.semanticweb.org/person/jeff-z-pan
+author	 => 	http://data.semanticweb.org/person/shenghui-wang
+author	 => 	http://data.semanticweb.org/person/adrian-mocan
+author	 => 	http://data.semanticweb.org/person/freddy-lecue
+author	 => 	http://data.semanticweb.org/person/amit-sheth
+author	 => 	http://data.semanticweb.org/person/krys-kochut
+author	 => 	http://data.semanticweb.org/person/wolf-siberski
+author	 => 	http://data.semanticweb.org/person/guus-schreiber
+author	 => 	http://data.semanticweb.org/person/willem-van-hage
+author	 => 	http://data.semanticweb.org/person/makoto-nakatsuji
+author	 => 	http://data.semanticweb.org/person/andreas-harth
+author	 => 	http://data.semanticweb.org/person/juergen-umbrich
+author	 => 	http://data.semanticweb.org/person/stefan-decker
+author	 => 	http://data.semanticweb.org/person/li-ding
+author	 => 	http://data.semanticweb.org/person/tim-finin
+author	 => 	http://data.semanticweb.org/person/harith-alani
+author	 => 	http://data.semanticweb.org/person/nigel-r-shadbolt
+author	 => 	http://data.semanticweb.org/person/sheila-mcilraith
+author	 => 	http://data.semanticweb.org/person/shirin-sohrabi
+author	 => 	http://data.semanticweb.org/person/abraham-bernstein
+author	 => 	http://data.semanticweb.org/person/guotong-xie
+author	 => 	http://data.semanticweb.org/person/jane-hunter
+author	 => 	http://data.semanticweb.org/person/klaas-dellschaft
+author	 => 	http://data.semanticweb.org/person/steffen-staab
+author	 => 	http://data.semanticweb.org/person/manolis-koubarakis
+author	 => 	http://data.semanticweb.org/person/jie-tang
+author	 => 	http://data.semanticweb.org/person/juanzi-li
+author	 => 	http://data.semanticweb.org/person/lalana-kagal
+author	 => 	http://data.semanticweb.org/person/jacco-van-ossenbruggen
+author	 => 	http://data.semanticweb.org/person/michiel-hildebrand
+author	 => 	http://data.semanticweb.org/person/hamish-cunningham
+author	 => 	http://data.semanticweb.org/person/kalina-bontcheva
+author	 => 	http://data.semanticweb.org/person/achille-fokoue
+author	 => 	http://data.semanticweb.org/person/edith-schonberg
+author	 => 	http://data.semanticweb.org/person/kavitha-srinivas
+author	 => 	http://data.semanticweb.org/person/eyal-oren
+author	 => 	http://data.semanticweb.org/person/renaud-delbru
+author	 => 	http://data.semanticweb.org/person/thomas-scharrenbach
+author	 => 	http://data.semanticweb.org/person/john-darlington
+author	 => 	http://data.semanticweb.org/person/landong-zuo
+author	 => 	http://data.semanticweb.org/person/manuel-salvadores
+author	 => 	http://data.semanticweb.org/person/nicholas-gibbins
+author	 => 	http://data.semanticweb.org/person/sm-hazzaz-imtiaz
+author	 => 	http://data.semanticweb.org/person/deborah-mcguinness
+author	 => 	http://data.semanticweb.org/person/paulo-pinheiro-da-silva
+author	 => 	http://data.semanticweb.org/person/david-martin
+author	 => 	http://data.semanticweb.org/person/bertrand-souville
+author	 => 	http://data.semanticweb.org/person/johan-koolwaaij
+author	 => 	http://data.semanticweb.org/person/marko-luther
+author	 => 	http://data.semanticweb.org/person/martin-wibbels
+author	 => 	http://data.semanticweb.org/person/matthias-wagner
+author	 => 	http://data.semanticweb.org/person/sebastian-boehm
+author	 => 	http://data.semanticweb.org/person/chiara-ghidini
+author	 => 	http://data.semanticweb.org/person/luciano-serafini
+author	 => 	http://data.semanticweb.org/person/marco-rospocher
+author	 => 	http://data.semanticweb.org/person/asuncion-gomez-perez
+author	 => 	http://data.semanticweb.org/person/andreas-wechselberger
+author	 => 	http://data.semanticweb.org/person/martin-hepp
+author	 => 	http://data.semanticweb.org/person/fabio-ciravegna
+author	 => 	http://data.semanticweb.org/person/cassio-dos-santos
+author	 => 	http://data.semanticweb.org/person/chen-wang
+author	 => 	http://data.semanticweb.org/person/feng-cao
+author	 => 	http://data.semanticweb.org/person/john-colgrave
+author	 => 	http://data.semanticweb.org/person/kevin-shank
+author	 => 	http://data.semanticweb.org/person/shengping-liu
+author	 => 	http://data.semanticweb.org/person/yang-yang
+author	 => 	http://data.semanticweb.org/person/daniel-olmedilla
+author	 => 	http://data.semanticweb.org/person/medha-atre
+author	 => 	http://data.semanticweb.org/person/mathieu-daquin
+author	 => 	http://data.semanticweb.org/person/johann-christoph-freytag
+author	 => 	http://data.semanticweb.org/person/olaf-hartig
+author	 => 	http://data.semanticweb.org/person/kay-uwe-schmidt
+author	 => 	http://data.semanticweb.org/person/jans-aasman
+author	 => 	http://data.semanticweb.org/person/cherie-youn
+author	 => 	http://data.semanticweb.org/person/clement-jonquet
+author	 => 	http://data.semanticweb.org/person/nicholas-griffith
+author	 => 	http://data.semanticweb.org/person/nigam-shah
+author	 => 	http://data.semanticweb.org/person/robert-schloss
+author	 => 	http://data.semanticweb.org/person/lei-zhang
+author	 => 	http://data.semanticweb.org/person/yuan-ni
+author	 => 	http://data.semanticweb.org/person/hanyu-li
+author	 => 	http://data.semanticweb.org/person/anthony-g-cohn
+author	 => 	http://data.semanticweb.org/person/catherine-dolbear
+author	 => 	http://data.semanticweb.org/person/glen-hart
+author	 => 	http://data.semanticweb.org/person/ronald-denaux
+author	 => 	http://data.semanticweb.org/person/vania-dimitrova
+author	 => 	http://data.semanticweb.org/person/jose-julio-alferes
+author	 => 	http://data.semanticweb.org/person/philipp-kaerger
+author	 => 	http://data.semanticweb.org/person/gideon-zenz
+author	 => 	http://data.semanticweb.org/person/ignazio-palmisano
+author	 => 	http://data.semanticweb.org/person/paul-doran
+author	 => 	http://data.semanticweb.org/person/sven-schwarz
+author	 => 	http://data.semanticweb.org/person/matthew-horridge
+author	 => 	http://data.semanticweb.org/person/kouji-kozaki
+author	 => 	http://data.semanticweb.org/person/riichiro-mizoguchi
+author	 => 	http://data.semanticweb.org/person/takeru-hirota
+author	 => 	http://data.semanticweb.org/person/floriana-esposito
+author	 => 	http://data.semanticweb.org/person/laura-dragan
+author	 => 	http://data.semanticweb.org/person/siegfried-handschuh
+author	 => 	http://data.semanticweb.org/person/edward-thomas
+author	 => 	http://data.semanticweb.org/person/stuart-taylor
+author	 => 	http://data.semanticweb.org/person/tania-tudorache
+author	 => 	http://data.semanticweb.org/person/katrin-weller
+author	 => 	http://data.semanticweb.org/person/vit-novacek
+author	 => 	http://data.semanticweb.org/person/pavel-klinov
+author	 => 	http://data.semanticweb.org/person/thomas-franz
+author	 => 	http://data.semanticweb.org/person/simon-schenk
+author	 => 	http://data.semanticweb.org/person/peter-fox
+author	 => 	http://data.semanticweb.org/person/daniel-miranker
+author	 => 	http://data.semanticweb.org/person/juan-f-sequeda
+author	 => 	http://data.semanticweb.org/person/gerhard-weikum
+author	 => 	http://data.semanticweb.org/person/jens-lehmann
+author	 => 	http://data.semanticweb.org/person/sebastian-hellmann
+author	 => 	http://data.semanticweb.org/person/soeren-auer
+author	 => 	http://data.semanticweb.org/person/cynthia-parr
+author	 => 	http://data.semanticweb.org/person/joel-sachs
+author	 => 	http://data.semanticweb.org/person/lushan-han
+author	 => 	http://data.semanticweb.org/person/gong-cheng
+author	 => 	http://data.semanticweb.org/person/michael-kifer
+author	 => 	http://data.semanticweb.org/person/lars-schmidt-thieme
+author	 => 	http://data.semanticweb.org/person/martin-szomszor
+author	 => 	http://data.semanticweb.org/person/andreas-hotho
+author	 => 	http://data.semanticweb.org/person/ciro-cattuto
+author	 => 	http://data.semanticweb.org/person/dominik-benz
+author	 => 	http://data.semanticweb.org/person/gerd-stumme
+author	 => 	http://data.semanticweb.org/person/ting-wang
+author	 => 	http://data.semanticweb.org/person/iris-miliaraki
+author	 => 	http://data.semanticweb.org/person/zoi-kaoudi
+author	 => 	http://data.semanticweb.org/person/stefan-schlobach
+author	 => 	http://data.semanticweb.org/person/christophe-gueret
+author	 => 	http://data.semanticweb.org/person/aditya-kalyanpur
+author	 => 	http://data.semanticweb.org/person/julian-dolby
+author	 => 	http://data.semanticweb.org/person/xingzhi-sun
+author	 => 	http://data.semanticweb.org/person/dimitrios-skoutas
+author	 => 	http://data.semanticweb.org/person/timos-sellis
+author	 => 	http://data.semanticweb.org/person/guilin-qi
+author	 => 	http://data.semanticweb.org/person/peter-haase
+author	 => 	http://data.semanticweb.org/person/qiu-ji
+author	 => 	http://data.semanticweb.org/person/zhisheng-huang
+author	 => 	http://data.semanticweb.org/person/markus-kroetzsch
+author	 => 	http://data.semanticweb.org/person/pascal-hitzler
+author	 => 	http://data.semanticweb.org/person/sebastian-rudolph
+author	 => 	http://data.semanticweb.org/person/harry-halpin
+author	 => 	http://data.semanticweb.org/person/frank-van-harmelen
+author	 => 	http://data.semanticweb.org/person/axel-polleres
+author	 => 	http://data.semanticweb.org/person/daniel-c-wolfson
+author	 => 	http://data.semanticweb.org/person/andy-seaborne
+author	 => 	http://data.semanticweb.org/person/darko-anicic
+author	 => 	http://data.semanticweb.org/person/jun-ma
+author	 => 	http://data.semanticweb.org/person/nenad-stojanovic
+author	 => 	http://data.semanticweb.org/person/roland-stuehmer
+author	 => 	http://data.semanticweb.org/person/sinan-sen
+author	 => 	http://data.semanticweb.org/person/tudor-groza
+author	 => 	http://data.semanticweb.org/person/kemafor-anyanwu
+author	 => 	http://data.semanticweb.org/person/hugh-glaser
+author	 => 	http://data.semanticweb.org/person/ian-millard
+author	 => 	http://data.semanticweb.org/person/bernhard-schandl
+author	 => 	http://data.semanticweb.org/person/daniel-krause
+author	 => 	http://data.semanticweb.org/person/maarten-de-rijke
+author	 => 	http://data.semanticweb.org/person/andreas-radinger
+author	 => 	http://data.semanticweb.org/person/blaz-fortuna
+author	 => 	http://data.semanticweb.org/person/andreas-langegger
+author	 => 	http://data.semanticweb.org/person/wolfram-woess
+author	 => 	http://data.semanticweb.org/person/giorgos-flouris
+author	 => 	http://data.semanticweb.org/person/irini-fundulaki
+author	 => 	http://data.semanticweb.org/person/vassilis-christophides
+author	 => 	http://data.semanticweb.org/person/ulf-leser
+author	 => 	http://data.semanticweb.org/person/kristina-lerman
+author	 => 	http://data.semanticweb.org/person/jianfeng-du
+author	 => 	http://data.semanticweb.org/person/yi-dong-shen
+author	 => 	http://data.semanticweb.org/person/sergej-sizov
+author	 => 	http://data.semanticweb.org/person/andrea-pugliese
+author	 => 	http://data.semanticweb.org/person/vs-subrahmanian
+author	 => 	http://data.semanticweb.org/person/spyros-kotoulas
+author	 => 	http://data.semanticweb.org/person/edgar-meij
+author	 => 	http://data.semanticweb.org/person/hugo-zaragoza
+author	 => 	http://data.semanticweb.org/person/peter-mika
+author	 => 	http://data.semanticweb.org/person/bingjun-sun
+author	 => 	http://data.semanticweb.org/person/c-lee-giles
+author	 => 	http://data.semanticweb.org/person/prasenjit-mitra
+author	 => 	http://data.semanticweb.org/person/yi-min-wang
+author	 => 	http://data.semanticweb.org/person/chunqiang-tang
+author	 => 	http://data.semanticweb.org/person/christopher-olston
+author	 => 	http://data.semanticweb.org/person/shashank-pandit
+author	 => 	http://data.semanticweb.org/person/ziv-bar-yossef
+author	 => 	http://data.semanticweb.org/person/gui-rong-xue
+author	 => 	http://data.semanticweb.org/person/qiang-yang
+author	 => 	http://data.semanticweb.org/person/xiao-ling
+author	 => 	http://data.semanticweb.org/person/xiaochuan-ni
+author	 => 	http://data.semanticweb.org/person/yong-yu
+author	 => 	http://data.semanticweb.org/person/jon-kleinberg
+author	 => 	http://data.semanticweb.org/person/lars-backstrom
+author	 => 	http://data.semanticweb.org/person/zheng-chen
+author	 => 	http://data.semanticweb.org/person/hang-li
+author	 => 	http://data.semanticweb.org/person/tao-qin
+author	 => 	http://data.semanticweb.org/person/tie-yan-liu
+author	 => 	http://data.semanticweb.org/person/guillaume-pierre
+author	 => 	http://data.semanticweb.org/person/ben-fei
+author	 => 	http://data.semanticweb.org/person/shenghua-bao
+author	 => 	http://data.semanticweb.org/person/zhong-su
+author	 => 	http://data.semanticweb.org/person/walter-binder
+author	 => 	http://data.semanticweb.org/person/juliana-freire
+author	 => 	http://data.semanticweb.org/person/luciano-barbosa
+author	 => 	http://data.semanticweb.org/person/bernardo-cuenca-grau
+author	 => 	http://data.semanticweb.org/person/qi-su
+author	 => 	http://data.semanticweb.org/person/boualem-benatallah
+author	 => 	http://data.semanticweb.org/person/fabio-casati
+author	 => 	http://data.semanticweb.org/person/anupriya-ankolekar
+author	 => 	http://data.semanticweb.org/person/wolfgang-nejdl
+author	 => 	http://data.semanticweb.org/person/ji-rong-wen
+author	 => 	http://data.semanticweb.org/person/anirban-mahanti
+author	 => 	http://data.semanticweb.org/person/carey-williamson
+author	 => 	http://data.semanticweb.org/person/martin-arlitt
+author	 => 	http://data.semanticweb.org/person/jun-zhang
+author	 => 	http://data.semanticweb.org/person/lada-adamic
+author	 => 	http://data.semanticweb.org/person/mark-ackerman
+author	 => 	http://data.semanticweb.org/person/daniel-weld
+author	 => 	http://data.semanticweb.org/person/steven-d-gribble
+author	 => 	http://data.semanticweb.org/person/ryen-white
+author	 => 	http://data.semanticweb.org/person/anthony-tomasic
+author	 => 	http://data.semanticweb.org/person/eric-horvitz
+author	 => 	http://data.semanticweb.org/person/jure-leskovec
+author	 => 	http://data.semanticweb.org/person/susan-dumais
+author	 => 	http://data.semanticweb.org/person/shyam-rajaram
+author	 => 	http://data.semanticweb.org/person/andrew-tomkins
+author	 => 	http://data.semanticweb.org/person/bo-pang
+author	 => 	http://data.semanticweb.org/person/jasmine-novak
+author	 => 	http://data.semanticweb.org/person/ravi-kumar
+author	 => 	http://data.semanticweb.org/person/hamid-motahari
+author	 => 	http://data.semanticweb.org/person/deepayan-chakrabarti
+author	 => 	http://data.semanticweb.org/person/kunal-punera
+author	 => 	http://data.semanticweb.org/person/anirban-dasgupta
+author	 => 	http://data.semanticweb.org/person/arpita-ghosh
+author	 => 	http://data.semanticweb.org/person/sandeep-pandey
+author	 => 	http://data.semanticweb.org/person/daqing-he
+author	 => 	http://data.semanticweb.org/person/jonathan-grady
+author	 => 	http://data.semanticweb.org/person/peter-brusilovsky
+author	 => 	http://data.semanticweb.org/person/hua-jun-zeng
+author	 => 	http://data.semanticweb.org/person/danushka-bollegala
+author	 => 	http://data.semanticweb.org/person/belle-tseng
+author	 => 	http://data.semanticweb.org/person/xiaodan-song
+author	 => 	http://data.semanticweb.org/person/yun-chi
+author	 => 	http://data.semanticweb.org/person/haewoon-kwak
+author	 => 	http://data.semanticweb.org/person/sue-moon
+author	 => 	http://data.semanticweb.org/person/chengxiang-zhai
+author	 => 	http://data.semanticweb.org/person/qiaozhu-mei
+author	 => 	http://data.semanticweb.org/person/hussein-alzoubi
+author	 => 	http://data.semanticweb.org/person/michael-rabinovich
+author	 => 	http://data.semanticweb.org/person/oliver-spatscheck
+author	 => 	http://data.semanticweb.org/person/thanh-tran
+author	 => 	http://data.semanticweb.org/person/matthew-richardson
+author	 => 	http://data.semanticweb.org/person/jiangong-zhang
+author	 => 	http://data.semanticweb.org/person/torsten-suel
+author	 => 	http://data.semanticweb.org/person/collin-jackson
+author	 => 	http://data.semanticweb.org/person/christian-borgs
+author	 => 	http://data.semanticweb.org/person/jennifer-chayes
+author	 => 	http://data.semanticweb.org/person/mohammad-mahdian
+author	 => 	http://data.semanticweb.org/person/nicole-immorlica
+author	 => 	http://data.semanticweb.org/person/hamid-nazerzadeh
+author	 => 	http://data.semanticweb.org/person/jiang-dejun
+author	 => 	http://data.semanticweb.org/person/dipanjan-chakraborty
+author	 => 	http://data.semanticweb.org/person/boerkur-sigurbjoernsson
+author	 => 	http://data.semanticweb.org/person/roelof-van-zwol
+author	 => 	http://data.semanticweb.org/person/shenghuo-zhu
+author	 => 	http://data.semanticweb.org/person/lei-zhang-2
+author	 => 	http://data.semanticweb.org/person/jiang-ming-yang
+author	 => 	http://data.semanticweb.org/person/rui-cai
+author	 => 	http://data.semanticweb.org/person/xing-xie
+author	 => 	http://data.semanticweb.org/person/yu-zheng
+author	 => 	http://data.semanticweb.org/person/shumeet-baluja
+author	 => 	http://data.semanticweb.org/person/yushi-jing
+author	 => 	http://data.semanticweb.org/person/ricardo-baeza-yates
+author	 => 	http://data.semanticweb.org/person/adam-barth
+author	 => 	http://data.semanticweb.org/person/kevin-lang
+author	 => 	http://data.semanticweb.org/person/michael-mahoney
+author	 => 	http://data.semanticweb.org/person/honglei-guo
+author	 => 	http://data.semanticweb.org/person/xian-wu
+author	 => 	http://data.semanticweb.org/person/xiaoxun-zhang
+author	 => 	http://data.semanticweb.org/person/zhili-guo
+author	 => 	http://data.semanticweb.org/person/vassilis-plachouras
+author	 => 	http://data.semanticweb.org/person/xin-li
+author	 => 	http://data.semanticweb.org/person/abraham-flaxman
+author	 => 	http://data.semanticweb.org/person/uriel-feige
+author	 => 	http://data.semanticweb.org/person/vahab-mirrokni
+author	 => 	http://data.semanticweb.org/person/vanja-josifovski
+author	 => 	http://data.semanticweb.org/person/yue-lu
+author	 => 	http://data.semanticweb.org/person/hongyuan-zha
+author	 => 	http://data.semanticweb.org/person/jiang-bian
+author	 => 	http://data.semanticweb.org/person/deng-cai
+author	 => 	http://data.semanticweb.org/person/ding-zhou
+author	 => 	http://data.semanticweb.org/person/aimin-pan
+author	 => 	http://data.semanticweb.org/person/panayiotis-tsaparas
+author	 => 	http://data.semanticweb.org/person/jennifer-neville
+author	 => 	http://data.semanticweb.org/person/kuansan-wang
+author	 => 	http://data.semanticweb.org/person/xiaoxin-yin
+author	 => 	http://data.semanticweb.org/person/evgeniy-gabrilovich
+author	 => 	http://data.semanticweb.org/person/nikolay-archak
+author	 => 	http://data.semanticweb.org/person/flavio-chierichetti
+author	 => 	http://data.semanticweb.org/person/li-wei-he
+author	 => 	http://data.semanticweb.org/person/jiawei-han
+author	 => 	http://data.semanticweb.org/person/leo-meyerovich
+author	 => 	http://data.semanticweb.org/person/zhaohui-zheng
+author	 => 	http://data.semanticweb.org/person/s-muthukrishnan
+Number of results: 341
+
 
 4. Return the names, if possible split up into first name and last name, of all authors working at the VU University Amsterdam (where the VU is identified as http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands)
-SELECT ?name ?firstName ?lastName WHERE { {SELECT DISTINCT ?author WHERE { ?author swrc:affiliation <http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands>. ?paper swrc:author ?author }}. ?author :name ?name. OPTIONAL { ?author :firstName ?firstName. ?author :family_name ?lastName} }
+
+SELECT ?name ?firstName ?lastName WHERE {
+	{
+		SELECT DISTINCT ?author WHERE {
+			?author swrc:affiliation <http://data.semanticweb.org/organization/vrije-universiteit-amsterdam-the-netherlands>. 
+			?paper swrc:author ?author
+		}
+	}. 
+	?author :name ?name. 
+	OPTIONAL { 
+		?author :firstName ?firstName. 
+		?author :family_name ?lastName
+	}
+}
+
+name		 => 	"Eyal Oren"
+firstName	 => 	"Eyal"
+lastName	 => 	"Oren"
+
+name		 => 	"Guus Schreiber"
+firstName	 => 	"Guus"
+lastName	 => 	"Schreiber"
+
+name		 => 	"Shenghui Wang"
+firstName	 => 	"Shenghui"
+lastName	 => 	"Wang"
+
+name		 => 	"Willem van Hage"
+firstName	 => 	"Willem"
+lastName	 => 	"Hage"
+
+name		 => 	"Christophe Guéret"
+firstName	 => 	"Christophe"
+lastName	 => 	"Gueret"
+
+name		 => 	"Frank van Harmelen"
+firstName	 => 	"Frank"
+lastName	 => 	"van Harmelen"
+
+name		 => 	"Frank van-Harmelen"
+firstName	 => 	"Frank"
+lastName	 => 	"van Harmelen"
+
+name		 => 	"Stefan Schlobach"
+firstName	 => 	"Stefan"
+lastName	 => 	"Schlobach"
+
+name		 => 	"Zhisheng Huang"
+firstName	 => 	"Zhisheng"
+lastName	 => 	"Huang"
+
+name		 => 	"Antoine Isaac"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Jacopo Urbani"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Kathrin Dentler"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Laura Hollink"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Lourens van der Meij"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Spyros Kotoulas"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Véronique Malaisé"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Willem Robert van Hage"
+firstName	 => 	"Willem"
+lastName	 => 	"Hage"
+
+name		 => 	"Christophe Gueret"
+firstName	 => 	"Christophe"
+lastName	 => 	"Gueret"
+
+name		 => 	"Guillaume Pierre"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Swaminathan Sivasubramanian"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Tobias Groothuyse"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Zharko Aleksovski"
+firstName	 => 	null
+lastName	 => 	null
+
+name		 => 	"Maarten Van Steen"
+firstName	 => 	null
+lastName	 => 	null
+Number of results: 23
 
 5. Return a list of exactly 10 different universities, ordered alphabetically by their name.
 
