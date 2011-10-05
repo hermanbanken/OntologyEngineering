@@ -28,16 +28,24 @@
 2 - JIMsCoAuthors: the class of all people that have published a paper together with James Hendler (where James Hendler is identified by http://data.semanticweb.org/person/james-hendler).
 
 :JIMsCoAuthors
-	a owl:Class
+	a owl:Class ;
 	rdfs:subClassOf
 	  [ a owl:Restriction ;
-		owl:onProperty dc:author ;]
+		owl:onProperty dc:authorOf ;
+		owl:someValuesFrom :JIMsPapers].
+		
+dc:author owl:inverseOf :authorOf .
+	
+:JIMsPapers
+	a owl:Class ;
+	rdfs:subClassOf swrc:InProceedings ;
+	rdfs:subClassOf
+	  [ a owl:Restriction ;
+	    owl:onProperty dc:author;
+	    owl:hasValue <http://data.semanticweb.org/person/james-hendler>
+	  ] .
 		
 3 - Authors: the class of all people that made a paper (paper is called InProceedings this dataset.)
-
-:Authors
-	a owl:Class
-	rdfs:
 
 4 - CityConfs: the class of all conferences that are based near a city.
 
