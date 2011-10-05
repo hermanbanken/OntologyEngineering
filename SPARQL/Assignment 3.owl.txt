@@ -47,6 +47,34 @@ dc:author owl:inverseOf :authorOf .
 		
 3 - Authors: the class of all people that made a paper (paper is called InProceedings this dataset.)
 
+:Authors
+	a owl:Class ;
+	rdfs:subClassOf
+	  [ a owl:Restriction ;
+		owl:onProperty dc:authorOf ;
+		owl:someValuesFrom :Papers].
+		
+dc:author owl:inverseOf :authorOf .
+	
+:Papers
+	a owl:Class ;
+	rdfs:subClassOf swrc:InProceedings .
+
 4 - CityConfs: the class of all conferences that are based near a city.
 
+:CityConfs
+	a owl:Class ;
+	rdfs:subClassOf swrc:ConferenceEvent ;
+	rdfs:subClassOf
+		[ a owl:Restriction ;
+		  owl:onProperty dc:based_near ;
+		  owl:minCardinality "1"^^<http://www.w3.org/2001/XMLSchema#int> ].
+
 5 - TopConfs: the class of all conferences that contain only top-papers.
+
+:TopConfs
+	a owl:Class ;
+	rdfs:subClassOf swrc:FREEEEEEEEEEEEEEK
+	rdfs:subClassOf
+		[ a owl:Restriction ;
+		  FREEK DOE DINGEN!! ].
