@@ -74,7 +74,16 @@ dc:author owl:inverseOf :authorOf .
 
 :TopConfs
 	a owl:Class ;
-	rdfs:subClassOf swrc:FREEEEEEEEEEEEEEK
+	rdfs:subClassOf swrc:ConferenceEvent 
 	rdfs:subClassOf
 		[ a owl:Restriction ;
-		  FREEK DOE DINGEN!! ].
+		  owl:onProperty rdf:type ;
+		  owl:hasValue :TopPaper ].
+
+:TopPaper
+	a owl:Class ;
+	rdfs:subClassOf swrc:InProceedings
+	rdfs:subClassOf
+		[ a owl:Restriction ;
+		  owl:onProperty dc:TopPaper;
+		  owl:hasValue "yes"<http://www.w3.org/2001/XMLSchema#string> ].
