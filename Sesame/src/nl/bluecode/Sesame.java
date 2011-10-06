@@ -8,6 +8,7 @@ import org.openrdf.model.Namespace;
 import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
 import org.openrdf.query.BindingSet;
+import org.openrdf.query.BooleanQuery;
 import org.openrdf.query.GraphQuery;
 import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.QueryLanguage;
@@ -63,6 +64,7 @@ public class Sesame {
 		
 		// Execute the query
 		TupleQuery tupleQuery;
+		BooleanQuery booleanQuery;
 		GraphQuery graphQuery;
 		HashMap<String, Namespace> nsp = new HashMap<String, Namespace>();
 		
@@ -117,6 +119,13 @@ public class Sesame {
 				}
 				
 				out = out + "Number of results: " + numResults + "\n";
+			}
+			else if(query.contains("ASK")){
+				booleanQuery = con.prepareBooleanQuery(QueryLanguage.SPARQL, namespaces + query);
+				out = out + "The anwser is " + (booleanQuery.evaluate() ? "yes" : "no");
+			}
+			else if(query.contains("DESCRIBE")){
+				out = out + "Let's describe that query as.. Euhm, non-defined?";
 			}
 			
 		
