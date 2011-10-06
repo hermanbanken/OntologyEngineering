@@ -123,6 +123,15 @@ SELECT DISTINCT ?author WHERE {
   FILTER(?countConf >= 2)
 }
 
+3b. List of papers with 4 authors.
+SELECT DISTINCT ?paper WHERE {
+	?paper rdf:type swrc:InProceedings. 
+	{
+		SELECT (COUNT(DISTINCT ?p) as ?countAuth)
+		WHERE {?paper swrc:author ?p }
+	}.
+	FILTER(?countAuth = 4)
+}
 
 author	 => 	http://data.semanticweb.org/person/yuzhong-qu
 author	 => 	http://data.semanticweb.org/person/jerome-euzenat
