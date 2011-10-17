@@ -21,36 +21,22 @@ import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.sail.memory.MemoryStore;
 
+
 public class Sesame {
-	static Repository myRepository;
-	static RepositoryConnection con;
 	static GUI gui;
+	static RepositoryConnection local, dbpedia;
 	
 	public static void main(String[] args) {
 		gui = new GUI();
 		
 		try {
-			myRepository = new SailRepository(new MemoryStore());
-			myRepository.initialize();
-
-			con = myRepository.getConnection();
-
-			
-			// Add files to the repository
-			con.add(new File("data/iswc-2006-complete.rdf"), "http://data/iswc-2006/", RDFFormat.RDFXML);
-			con.add(new File("data/iswc-2008-complete.rdf"), "http://data/iswc-2008/", RDFFormat.RDFXML);
-			con.add(new File("data/iswc-2009-complete.rdf"), "http://data/iswc-2009/", RDFFormat.RDFXML);
-			con.add(new File("data/iswc-2010-complete.rdf"), "http://data/iswc-2010/", RDFFormat.RDFXML);
-			
-			con.add(new File("data/www-2007-complete.rdf"), "http://data/www-2007/", RDFFormat.RDFXML);
-			con.add(new File("data/www-2008-complete.rdf"), "http://data/www-2008/", RDFFormat.RDFXML);
-			con.add(new File("data/www-2009-complete.rdf"), "http://data/www-2009/", RDFFormat.RDFXML);
-			con.add(new File("data/www-2010-complete.rdf"), "http://data/www-2010/", RDFFormat.RDFXML);
+			local = LocalConnection.factory().get();
+			dbpedia = DBPediaConnection.factory().get();
 			
 			// The query
-			String query = "SELECT ?class WHERE { ?subject rdf:type ?class }";
+			String query = "SELECT DISTINCT ?class WHERE { ?subject rdf:type ?class }";
 			
-			gui.setOutput(doQuery(query), query);
+			gui.setOutput(doQuery(query,dbpedia), query);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -58,7 +44,7 @@ public class Sesame {
 		}
 	}
 	
-	public static String doQuery(String query){
+	public static String doQuery(String query, RepositoryConnection con){
 		String out = "";
 		String namespaces = "";
 		
@@ -69,13 +55,13 @@ public class Sesame {
 		HashMap<String, Namespace> nsp = new HashMap<String, Namespace>();
 		
 		try {
-			RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
+			/*RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
 			while (namespacesinRepository.hasNext()) {
 				Namespace namespace = namespacesinRepository.next();
 				namespaces += "PREFIX " + namespace.getPrefix() + ": <" + namespace.getName() + ">\n";
 				System.out.println("Namespace " + namespace.getPrefix() + ": <" + namespace.getName() + ">");
 				nsp.put(namespace.getName(), namespace);
-			}
+			}*/
 			
 			if(query.contains("CONSTRUCT"))
 			{
@@ -94,7 +80,7 @@ public class Sesame {
 							a.getObject() + " .\n";
 				}
 
-				//out = out + "Number of results: " + numResults + "\n";
+				out = out + "Number of results: " + numResults + "\n";
 			} 
 			else if(query.contains("SELECT"))
 			{

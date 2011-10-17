@@ -5,5 +5,8 @@
 	<classpathentry kind="lib" path="lib/openrdf-sesame-2.5.0-onejar.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-2.0.99.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.99.jar"/>
+	<classpathentry kind="lib" path="lib/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
