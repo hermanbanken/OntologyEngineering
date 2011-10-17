@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class GUI implements ActionListener {
 	JTextArea f_output;
-	JTextField f_query;
+	JTextArea f_query;
 	ArrayList<Class<Sesame>> listeners;
 	
 	public GUI(){
@@ -18,18 +18,18 @@ public class GUI implements ActionListener {
 		
 		f.setSize(640, 400);
 		Container contentPane = f.getContentPane();
-		contentPane.setLayout(new FlowLayout());
+		contentPane.setLayout(new BorderLayout());
 
 		JLabel l_query = new JLabel("Query");
 		f.add(l_query);
-		f_query = new JTextField(30);
-		f.add(f_query);
+		f_query = new JTextArea(20, 50);
+		f.add(f_query, BorderLayout.CENTER);
 		JButton b_query = new JButton("Execute");
 		b_query.addActionListener(this);
-		f.add(b_query);
+		f.add(b_query, BorderLayout.EAST);
 		f_output = new JTextArea(20, 50);
         JScrollPane scroll = new JScrollPane(f_output);
-		f.add(scroll);        
+		f.add(scroll, BorderLayout.SOUTH);       
 		
 		// pack();
 		f.setVisible(true);
