@@ -36,7 +36,7 @@ public class Sesame {
 			// The query
 			String query = "SELECT DISTINCT ?class WHERE { ?subject rdf:type ?class }";
 			
-			gui.setOutput(doQuery(query,dbpedia), query);
+			gui.setOutput(doQuery(query,local), query);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -55,13 +55,15 @@ public class Sesame {
 		HashMap<String, Namespace> nsp = new HashMap<String, Namespace>();
 		
 		try {
-			/*RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
+			if(con == Sesame.local) {
+			RepositoryResult<Namespace> namespacesinRepository = con.getNamespaces();
 			while (namespacesinRepository.hasNext()) {
 				Namespace namespace = namespacesinRepository.next();
 				namespaces += "PREFIX " + namespace.getPrefix() + ": <" + namespace.getName() + ">\n";
 				System.out.println("Namespace " + namespace.getPrefix() + ": <" + namespace.getName() + ">");
 				nsp.put(namespace.getName(), namespace);
-			}*/
+			}
+			}
 			
 			if(query.contains("CONSTRUCT"))
 			{

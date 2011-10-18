@@ -1,0 +1,18 @@
+DBPedia
+*******
+SELECT DISTINCT ?subject ?label
+WHERE { 
+?subject rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
+?subject rdfs:label ?label.
+FILTER regex(?label, "university" , "i").
+FILTER langMatches( lang(?label), 'en')
+}
+
+Local
+*****
+SELECT DISTINCT ?subject ?label
+WHERE {
+?subject rdf:type :Organization.
+?subject rdfs:label ?label.
+FILTER regex(?label, "university" , "i")
+}
