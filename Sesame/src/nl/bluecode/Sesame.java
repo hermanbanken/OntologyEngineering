@@ -1,6 +1,7 @@
 package nl.bluecode;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,11 +12,13 @@ import org.openrdf.query.BindingSet;
 import org.openrdf.query.BooleanQuery;
 import org.openrdf.query.GraphQuery;
 import org.openrdf.query.GraphQueryResult;
+import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.RepositoryResult;
 import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFFormat;
@@ -44,9 +47,12 @@ public class Sesame {
 		}
 	}
 	
+	private static ArrayList<Statement> lastResults;
+	
 	public static String doQuery(String query, RepositoryConnection con){
 		String out = "";
 		String namespaces = "";
+		lastResults = new ArrayList<Statement>();
 		
 		// Execute the query
 		TupleQuery tupleQuery;
@@ -70,15 +76,20 @@ public class Sesame {
 				graphQuery = con.prepareGraphQuery(QueryLanguage.SPARQL, namespaces + query);
 				GraphQueryResult result = graphQuery.evaluate();
 				
+				System.out.println(result);
+				
 				// Get results
 				int numResults = 0;
 				
 				while (result.hasNext()) {
+					System.out.println("Result found");
 					numResults++;
 					Statement a = result.next();
+					System.out.println(a);
+					lastResults.add(a);
 					out = out + 
 							a.getSubject() + "\t" + 
-							nsp.get(a.getPredicate().getNamespace()).getPrefix() + ":"+a.getPredicate().getLocalName() + "\t" + 
+							a.getPredicate() + "\t" + 
 							a.getObject() + " .\n";
 				}
 
@@ -122,6 +133,17 @@ public class Sesame {
 		}
 		
 		return out;
+	}
+	
+	public static String addLastResultToKB() {
+		try {	
+			for(Statement i : lastResults){
+				local.add(i);
+			}
+			return "Done.";
+		} catch(Exception e) {
+			return e.getMessage();
+		}
 	}
 	
 	public static String removeSpaces(String s) {
