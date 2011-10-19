@@ -12,10 +12,31 @@ Local
 *****
 SELECT DISTINCT ?subject ?label
 WHERE {
-?subject rdf:type :Organization.
+?subject rdf:type :Conferenceevent.
 ?subject rdfs:label ?label.
 FILTER regex(?label, "university" , "i")
 }
+
+
+
+DBPedia
+*******
+SELECT DISTINCT ?subject ?label
+WHERE { 
+?subject rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
+?subject rdfs:label ?label.
+FILTER regex(?label, "university" , "i").
+FILTER langMatches( lang(?label), 'en')
+}
+
+Local
+*****
+SELECT DISTINCT ?subject ?basedNear
+WHERE {
+?subject rdf:type :ConferenceEvent.
+?subject rdfs:based_near ?basedNear.
+}
+
 
 --------------------------------------------------------------------------
 Query 1 : Select all persons in the dogfood dataset that are affiliated with U.S. Universities that have more than 100 000 students
@@ -33,3 +54,20 @@ WHERE {
 	?university skos:exactMatch <<?university uit vorige query hier>> . 
 	?person swrc:affiliation ?university
 }
+
+
+Query 2: Select all persons who are affliated universities that are located in Indiana.
+SELECT ?university
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
+	?university rdf:type <http://dbpedia.org/class/yago/CitiesInIndiana>.
+}
+
+
+SELECT ?person
+WHERE { 
+	?university skos:exactMatch <<?university uit vorige query hier>> . 
+	?person swrc:affiliation ?university
+}
+
+-----------------------------------------------------------------------------
