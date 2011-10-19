@@ -70,4 +70,20 @@ WHERE {
 	?person swrc:affiliation ?university
 }
 
+
+Query 3: Select all lat en long of the cities where the conferences were.
+SELECT ?city ?lat ?long {
+	?city rdf:type <http://dbpedia.org/ontology/City>.
+	?city <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat.
+	?city <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long.
+}
+
+SELECT ?conferenceEvent ?lat ?long
+WHERE {
+	?conferenceEvent rdf:type :ConferenceEvent.
+	?conferenceEvent :based_near <<?query hiervoor>>.
+	//?lat en ?long
+}
+
+
 -----------------------------------------------------------------------------
