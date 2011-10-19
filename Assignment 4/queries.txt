@@ -62,33 +62,22 @@ WHERE {
 	?person swrc:affiliation ?localuniversity
 }
 
+--------------------------------------------------------------------------
 Query 2: Select all persons who are affliated universities that are located in Indiana.
-SELECT ?university
+CONSTRUCT { ?university ?predicate ?object }
 WHERE {
 	?university rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
-	?university rdf:type <http://dbpedia.org/class/yago/CitiesInIndiana>.
+	?university <http://dbpedia.org/property/city> ?city.
+	?city rdf:type <http://dbpedia.org/class/yago/CitiesInIndiana>.
+	?city <http://dbpedia.org/property/populationTotal> ?population.
+	FILTER ( ?population > 100000).
+	?university ?predicate ?object
 }
-
 
 SELECT ?person
 WHERE { 
-	?university skos:exactMatch <<?university uit vorige query hier>> . 
-	?person swrc:affiliation ?university
-}
-
-
-Query 3: Select all lat en long of the cities where the conferences were.
-SELECT ?city ?lat ?long {
-	?city rdf:type <http://dbpedia.org/ontology/City>.
-	?city <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat.
-	?city <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long.
-}
-
-SELECT ?conferenceEvent ?lat ?long
-WHERE {
-	?conferenceEvent rdf:type :ConferenceEvent.
-	?conferenceEvent :based_near <<?query hiervoor>>.
-	//?lat en ?long
+	?localuniversity skos:exactMatch ?university . 
+	?person swrc:affiliation ?localuniversity
 }
 
 
