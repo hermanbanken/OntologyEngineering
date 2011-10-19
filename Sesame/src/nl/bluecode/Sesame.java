@@ -1,6 +1,5 @@
 package nl.bluecode;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,17 +11,11 @@ import org.openrdf.query.BindingSet;
 import org.openrdf.query.BooleanQuery;
 import org.openrdf.query.GraphQuery;
 import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
-import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.RepositoryResult;
-import org.openrdf.repository.sail.SailRepository;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.sail.memory.MemoryStore;
 
 
 public class Sesame {
@@ -140,6 +133,7 @@ public class Sesame {
 			for(Statement i : lastResults){
 				local.add(i);
 			}
+			local.commit();
 			return "Done.";
 		} catch(Exception e) {
 			return e.getMessage();
