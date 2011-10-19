@@ -31,6 +31,9 @@ public class LocalConnection {
 			con.add(new File("data/www-2008-complete.rdf"), "http://data/www-2008/", RDFFormat.RDFXML);
 			con.add(new File("data/www-2009-complete.rdf"), "http://data/www-2009/", RDFFormat.RDFXML);
 			con.add(new File("data/www-2010-complete.rdf"), "http://data/www-2010/", RDFFormat.RDFXML);
+			
+			con.add(new File("data/Dogfood-DBPedia.rdf"), "http://data/dogfooddbpedia/", RDFFormat.TURTLE);
+
 	}
 	
 	public static LocalConnection factory() throws RDFParseException, RepositoryException, IOException {

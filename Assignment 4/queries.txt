@@ -16,3 +16,20 @@ WHERE {
 ?subject rdfs:label ?label.
 FILTER regex(?label, "university" , "i")
 }
+
+--------------------------------------------------------------------------
+Query 1 : Select all persons in the dogfood dataset that are affiliated with U.S. Universities that have more than 100 000 students
+
+SELECT ?university
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
+	?university <http://dbpedia.org/ontology/country> <http://dbpedia.org/resource/United_States>.
+	?university <http://dbpedia.org/property/students> ?students.
+	FILTER ( ?students > 100000 )
+}
+
+SELECT ?person
+WHERE { 
+	?university skos:exactMatch <<?university uit vorige query hier>> . 
+	?person swrc:affiliation ?university
+}

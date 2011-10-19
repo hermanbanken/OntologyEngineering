@@ -46,7 +46,7 @@ public class GUI implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String output = Sesame.doQuery(f_query.getText(), Sesame.dbpedia);
+		String output = Sesame.doQuery(f_query.getText(), Sesame.local);
 		f_query.setText(Sesame.removeSpaces(f_query.getText()));
 		setOutput(output);
 	}
