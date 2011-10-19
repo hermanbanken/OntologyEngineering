@@ -38,6 +38,13 @@ WHERE {
 }
 
 
+
+--------------------------------------------------------------------------
+Explanation:
+
+"All construct query's get executed remotely and will then be saved to the knowlegde base."
+"All select query's can be executed after that has been done."
+
 --------------------------------------------------------------------------
 Query 1 : Select all persons in the dogfood dataset that are affiliated with U.S. Universities that have more than 100 000 students
 
@@ -66,7 +73,7 @@ WHERE {
 Query 2: Select all persons who are affliated universities that are located in Indiana.
 CONSTRUCT { ?university ?predicate ?object }
 WHERE {
-	?university rdf:type <http://dbpedia.org/ontology/EducationalInstitution>.
+	?university rdf:type <http://dbpedia.org/ontology/University>.
 	?university <http://dbpedia.org/property/city> ?city.
 	?city rdf:type <http://dbpedia.org/class/yago/CitiesInIndiana>.
 	?city <http://dbpedia.org/property/populationTotal> ?population.
@@ -74,11 +81,92 @@ WHERE {
 	?university ?predicate ?object
 }
 
-SELECT ?person
-WHERE { 
-	?localuniversity skos:exactMatch ?university . 
-	?person swrc:affiliation ?localuniversity
+CONSTRUCT { ?university ?predicate ?object }
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/University>.
+	?university <http://dbpedia.org/property/city> ?city.
+	?city <http://dbpedia.org/property/populationTotal> ?population.
+	FILTER ( ?population > 100000).
+	?university ?predicate ?object
 }
 
+SELECT ?person ?state
+WHERE { 
+	?person swrc:affiliation ?localuniversity.
+	?localuniversity skos:exactMatch ?university . 
+	?university <http://dbpedia.org/property/state> ?state.
+}
 
+--------------------------------------------------------------------------
+Query 3: Select all persons who work in different countrys than the are based.
+
+CONSTRUCT { ?university <http://dbpedia.org/property/country> ?country }
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/University>.
+	?university <http://dbpedia.org/property/country> ?country.
+	?university rdfs:label ?label.
+	FILTER regex(?label, "university" , "i")
+}
+
+SELECT DISTINCT ?person
+WHERE {
+	?person swrc:affiliation ?localuniversity.
+	?localuniversity skos:exactMatch ?university.
+	?person foaf:based_near ?home.
+	?university <http://dbpedia.org/property/country> ?work.
+	FILTER( ?work != ?home).
+}
+	
 -----------------------------------------------------------------------------
+Query 4: Select all movies that where put in theathers during swc 2010
+
+CONSTRUCT { ?movie <http://dbpedia.org/ontology/releaseDate> ?date }
+WHERE {
+	?movie rdf:type <http://dbpedia.org/ontology/Film>.
+	?movie <http://dbpedia.org/ontology/releaseDate> ?date.
+	FILTER (?date > "2009-01-01"^^xsd:date && ?date < "2010-01-01"^^xsd:date)
+}
+
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+SELECT ?ds ?de
+WHERE {
+	?movie <http://dbpedia.org/ontology/releaseDate> ?date.
+	?conf ical:dtend ?end.
+	?conf ical:dtstart ?start.
+	?start ical:date ?ds.
+	?end ical:date ?de.
+	FILTER (?conf = "http://data.semanticweb.org/conference/www/2010").
+	FILTER (xsd:dateTime(?date) > xsd:dateTime(?ds)  && xsd:dateTime(?date) < xsd:dateTime(?de) )
+}
+
+--------------------------------------------------------------------------
+Query 5: Select all persons who work at universities that are located in the Germany.
+CONSTRUCT { ?university ?predicate ?object }
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/University>.
+	?university <http://dbpedia.org/property/country> <http://dbpedia.org/page/Germany>.
+	?university ?predicate ?object
+}
+
+SELECT ?person
+WHERE { 
+	?person swrc:affiliation ?localuniversity.
+	?localuniversity skos:exactMatch ?university . 
+	?university <http://dbpedia.org/property/country> <http://dbpedia.org/page/Germany>.
+}
+-----------------------------------------------------------------------------
+Query 6: Select all persons who work at universities that are older than 1800.
+CONSTRUCT { ?university <http://dbpedia.org/property/established> ?year }
+WHERE {
+	?university rdf:type <http://dbpedia.org/ontology/University>.
+	?university <http://dbpedia.org/property/established> ?year.
+	FILTER( ?year < 1800 )
+}
+
+SELECT ?person
+WHERE { 
+	?person swrc:affiliation ?localuniversity.
+	?localuniversity skos:exactMatch ?university . 
+	?university <http://dbpedia.org/property/established> ?year.
+	FILTER( ?year < 1800 )
+}
